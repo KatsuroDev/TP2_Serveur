@@ -25,10 +25,10 @@ function displayMonsters(monster) {
 
     monsterHtml += `<th scope="row">${monster.atlasNumber}<img class="monsterpic" src="${monster.assets}"></th>`;
     monsterHtml += `<td><a href="details.html?atlasnumber=${monster.atlasNumber}">${monster.name}</a></td>`;
-    monsterHtml += `<td>[${monster.health.min}, ${monster.health.max}]</td>`;
-    monsterHtml += `<td>[${monster.damage.min}, ${monster.damage.max}]</td>`;
-    monsterHtml += `<td>[${monster.speed.min}, ${monster.speed.max}]</td>`;
-    monsterHtml += `<td>[${percentage(monster.critical.min)}, ${percentage(monster.critical.max)}]%</td>`;
+    monsterHtml += `<td>[${monster.health.min} - ${monster.health.max}]</td>`;
+    monsterHtml += `<td>[${monster.damage.min} - ${monster.damage.max}]</td>`;
+    monsterHtml += `<td>[${monster.speed.min} - ${monster.speed.max}]</td>`;
+    monsterHtml += `<td>[${percentage(monster.critical.min)} - ${percentage(monster.critical.max)}]%</td>`;
 
     monsterHtml += '</tr>';
     return monsterHtml;

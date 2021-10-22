@@ -21,6 +21,24 @@ async function getMonster(id) {
     const response = await axios.get(MONSTER_URL + id);
     if (response.status === 200)
     {
-        console.log(response.data);
+        const monster = response.data;
+        displayMonster(monster);
     }
+}
+
+function displayMonster(monster) {
+    $("#lblAtlasnumber").html(monster.atlasNumber);
+    $("#imgMonster").attr("src", monster.assets);
+    $("#lblName").html(monster.name);
+
+    $("#lblMonsterHealth").html(`Health: [${monster.health.min} - ${monster.health.max}]`);
+    $("#lblMonsterDamage").html(`Damage: [${monster.damage.min} - ${monster.damage.max}]`);
+    $("#lblMonsterSpeed").html(`Speed: [${monster.speed.min} - ${monster.speed.max}]`);
+    $("#lblMonsterCritical").html(`Critical: [${percentage(monster.critical.min)} - ${percentage(monster.critical.max)}]%`);
+}
+
+
+function percentage(number) {
+    const result = number*100;
+    return result.toFixed(2);
 }

@@ -3,10 +3,6 @@
     height: auto;
 }
 
-th {
-    text-align: center;
-}
-
 td {
     vertical-align: middle;
     text-align: center;
@@ -27,4 +23,13 @@ tbody {
 h1 {
     text-align: center;
     padding: 10px;
+}
+
+#imgMonster {
+    width: 150px;
+    height: auto;
+}
+
+#monsterid, #monsterspec, th {
+    text-align: center;
 }

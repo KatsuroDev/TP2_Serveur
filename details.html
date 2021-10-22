@@ -19,11 +19,37 @@
     <div class="container">
         <h1>Andromia - Monster Atlas</h1>
         <div class="row">
-            <div class="col-9" id="monsterid">
+            <div class="col-6" id="monsterid">
+                <h2 id="lblAtlasnumber"></h2>
+                <img id="imgMonster">
+                <h2 id="lblName"></h2>
             </div>
-            <div class="col-3" id="monsterspec">
+            <div class="col-6" id="monsterspec">
+                <p id="lblMonsterHealth"></p>
+                <p id="lblMonsterDamage"></p>
+                <p id="lblMonsterSpeed"></p>
+                <p id="lblMonsterCritical"></p>
+                <button id="btnLocation" class="btn btn-success">Locations</button>
+                <button id="btnGenerate" class="btn btn-success">Generate</button>
             </div>
         </div>
+        <table id="specimens" class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Affinity</th>
+                    <th scope="col">Health</th>
+                    <th scope="col">Damage</th>
+                    <th scope="col">Speed</th>
+                    <th scope="col">Critical</th>
+                    <th scope="col">Talents</th>
+                    <th scope="col">Kernel</th>
+                    <th scope="col">Hash</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </div>
     
 </body>
