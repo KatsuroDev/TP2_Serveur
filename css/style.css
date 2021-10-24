@@ -33,3 +33,18 @@ h1 {
 #monsterid, #monsterspec, th {
     text-align: center;
 }
+
+.elementsImg {
+    width: 50px;
+    height: auto;
+}
+
+.block {
+    letter-spacing: -8px;
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    overflow: hidden;
+    padding: 0;
+    line-height: 1;
+}
