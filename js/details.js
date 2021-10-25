@@ -15,6 +15,14 @@ const urlParams = {};
 
 $(document).ready(() => {
     getMonster(urlParams.atlasnumber);
+
+    $('#btnLocation').click(() => {
+
+    });
+
+    $('#btnGenerate').click(() => {
+        addSpecimen();
+    });
 });
 
 
@@ -84,6 +92,19 @@ function displaySpecimen(specimen) {
     return specimenHtml;
 }
 
+async function addSpecimen() {
+    const GENERATE_SPECIMEN_URL = `https://api.andromia.science/monsters/${urlParams.atlasnumber}/actions?type=generate`;
+
+    const response = await axios.post(GENERATE_SPECIMEN_URL);
+    if (response.status === 201)
+    {
+        const newSpecimen = response.data;
+        const specimenHtml = displaySpecimen(newSpecimen);
+        $('#specimens tbody').append(specimenHtml);
+    } else {
+        console.log(response);
+    }
+}
 
 function percentage(number) {
     const result = number*100;
