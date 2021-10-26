@@ -29,7 +29,7 @@
                 <p id="lblMonsterDamage"></p>
                 <p id="lblMonsterSpeed"></p>
                 <p id="lblMonsterCritical"></p>
-                <button id="btnLocation" class="btn btn-success">Locations</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#locationModal">Locations</button>
                 <button id="btnGenerate" class="btn btn-success">Generate</button>
             </div>
         </div>
@@ -53,4 +53,65 @@
     </div>
     
 </body>
+
+ <!-- Modal -->
+ <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="locationModalLabel">Locations</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <table id="locations" class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Position</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Season</th>
+                    <th scope="col">Rates</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div class="row" style="padding-left: 75px;">
+            <div class="col">
+                <input type="text" pattern="[A-Z]{1,2}[0-9]{3}" class="form-control col" id="txtPosition">
+            </div>
+            <div class="col">
+                <select class="form-select  id="cboTime">
+                    <option>Morning</option>
+                    <option>Day</option>
+                    <option>Night</option>
+                </select>
+            </div>
+            <div class="col">
+                <select class="form-select" id="cboSeason">
+                    <option>Spring</option>
+                    <option>Summer</option>
+                    <option>Autumn</option>
+                    <option>Winter</option>
+                </select>
+            </div>
+            <div class="col">
+                <select class="form-select" id="cboRates">
+                    <option>Common</option>
+                    <option>Uncommon</option>
+                    <option>Rare</option>
+                    <option>Limited</option>
+                </select>
+            </div>
+            <div class="col">
+                <button id="btnLocation" class="col btn btn-secondary">Add</button>
+            </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+</div>
 </html>

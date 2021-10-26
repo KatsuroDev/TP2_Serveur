@@ -47,6 +47,7 @@ function displayMonster(monster) {
 
     console.log(monster.specimens);
     displaySpecimens(monster.specimens);
+    displayLocations(monster.locations);
 }
 
 function displaySpecimens(specimens) {
@@ -92,6 +93,27 @@ function displaySpecimen(specimen) {
     return specimenHtml;
 }
 
+function displayLocations(locations) {
+    
+    let locationsHtml = '';
+    locations.forEach(l => {
+        locationsHtml += displayLocation(l);
+    });
+    $('#locations tbody').append(locationsHtml);
+}
+
+function displayLocation(location) {
+    let locationHtml = '<tr>';
+
+    locationHtml += `<td>${location.position}</td>`;
+    locationHtml += `<td>${location.time}</td>`;
+    locationHtml += `<td><img src="img/seasons/${location.season}.png" alt="${location.season}" title="${location.season}"></td>`;
+    locationHtml += `<td><img src="img/rarities/${location.rates}.png" alt="${location.rates}" title="${location.rates}"></td>`;
+
+    locationHtml += '</tr>';
+    return locationHtml;
+}
+
 async function addSpecimen() {
     const GENERATE_SPECIMEN_URL = `https://api.andromia.science/monsters/${urlParams.atlasnumber}/actions?type=generate`;
 
@@ -104,6 +126,20 @@ async function addSpecimen() {
     } else {
         console.log(response);
     }
+}
+
+async function addLocation() {
+    const CREATE_LOCATION_URL = `https://api.andromia.science/monsters/atlas/${urlParams.atlasnumber}/location`
+    
+    const response = await axios.post(CREATE_LOCATION_URL);
+    if(response.status === 201) {
+        const newLocation = response.data;
+        const locationHtml = displayLocation(newLocation);
+        $('#locations tbody').append(locationHtml);
+    } else {
+        console.log(response);
+    }
+
 }
 
 function percentage(number) {
