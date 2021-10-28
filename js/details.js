@@ -17,7 +17,7 @@ $(document).ready(() => {
     getMonster(urlParams.atlasnumber);
 
     $('#btnLocation').click(() => {
-
+        addLocation();
     });
 
     $('#btnGenerate').click(() => {
@@ -129,17 +129,34 @@ async function addSpecimen() {
 }
 
 async function addLocation() {
-    const CREATE_LOCATION_URL = `https://api.andromia.science/monsters/atlas/${urlParams.atlasnumber}/location`
-    
-    const response = await axios.post(CREATE_LOCATION_URL);
-    if(response.status === 201) {
-        const newLocation = response.data;
-        const locationHtml = displayLocation(newLocation);
-        $('#locations tbody').append(locationHtml);
-    } else {
-        console.log(response);
-    }
 
+    const isLocationValid = document.getElementById('txtPosition').checkValidity();
+    if(isLocationValid)
+    {
+        const position = $('#txtPosition').val();
+        const time = $('#cboTime').val();
+        const season = $('#cboSeasons').val();
+        const rates = $('#cboRates').val();
+
+        const CREATE_LOCATION_URL = `https://api.andromia.science/monsters/atlas/${urlParams.atlasnumber}/locations`
+
+        const body = {
+            position: position,
+            time: time,
+            season: season,
+            rates: rates
+        }
+
+        const response = await axios.post(CREATE_LOCATION_URL, body);
+        if(response.status === 201) {
+            const newLocation = response.data;
+            const locationHtml = displayLocation(newLocation);
+            $('#locations tbody').append(locationHtml);
+        } else {
+            console.log(response);
+        }
+    }
+    
 }
 
 function percentage(number) {
