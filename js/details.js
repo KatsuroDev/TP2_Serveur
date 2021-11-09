@@ -55,7 +55,7 @@ function displaySpecimens(specimens) {
     specimens.forEach(s => {
         specimensHtml += displaySpecimen(s);
     });
-    $('#specimens tbody').append(specimensHtml);
+    $('#specimens tbody').prepend(specimensHtml);
 }
 
 function displaySpecimen(specimen) {
@@ -122,7 +122,7 @@ async function addSpecimen() {
     {
         const newSpecimen = response.data;
         const specimenHtml = displaySpecimen(newSpecimen);
-        $('#specimens tbody').append(specimenHtml);
+        $('#specimens tbody').prepend(specimenHtml);
     } else {
         console.log(response);
     }
