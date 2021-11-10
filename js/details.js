@@ -36,14 +36,14 @@ async function getMonster(id) {
 }
 
 function displayMonster(monster) {
-    $("#lblAtlasnumber").html(monster.atlasNumber);
-    $("#imgMonster").attr("src", monster.assets);
-    $("#lblName").html(monster.name);
+    $('#lblAtlasnumber').html(monster.atlasNumber);
+    $('#imgMonster').attr('src', monster.assets);
+    $('#lblName').html(monster.name);
 
-    $("#lblMonsterHealth").html(`Health: [${monster.health.min} - ${monster.health.max}]`);
-    $("#lblMonsterDamage").html(`Damage: [${monster.damage.min} - ${monster.damage.max}]`);
-    $("#lblMonsterSpeed").html(`Speed: [${monster.speed.min} - ${monster.speed.max}]`);
-    $("#lblMonsterCritical").html(`Critical: [${percentage(monster.critical.min)} - ${percentage(monster.critical.max)}]%`);
+    $('#lblMonsterHealth').html(`Health: [${monster.health.min} - ${monster.health.max}]`);
+    $('#lblMonsterDamage').html(`Damage: [${monster.damage.min} - ${monster.damage.max}]`);
+    $('#lblMonsterSpeed').html(`Speed: [${monster.speed.min} - ${monster.speed.max}]`);
+    $('#lblMonsterCritical').html(`Critical: [${percentage(monster.critical.min)} - ${percentage(monster.critical.max)}]%`);
 
     console.log(monster.specimens);
     displaySpecimens(monster.specimens);
@@ -166,12 +166,13 @@ function percentage(number) {
 
 function get_colored_hash(hash) {
     const colored_hash = {};
-    colored_hash.start_hash = hash.substring(0,2);
-    colored_hash.end_hash = hash.substr(-2);
+    colored_hash.start_hash = hash.substring(0,2); // Retourne les 2 premiers caractères
+    colored_hash.end_hash = hash.substr(-2); // Retourne les 2 derniers caractères
     colored_hash.hexcolor_hash = [];
-    for(let i = 0; i< 10; i++)
+    for(let i = 0; i< 10; i++) // Boucle 10 fois parce que le hash contient 60 caractères après le retrait des 2 premiers et 2 derniers, et qu'une couleur hexadecimal a 6 caractères.
     {
-        colored_hash.hexcolor_hash.push(hash.substr(2+i*6, 6));
+        colored_hash.hexcolor_hash.push(hash.substr(2+i*6, 6)); // Retourne 6 caractères, avec un offset de 2 (les 2 premiers caractères)
+                                                                // plus le nombre de caractère qu'on a déjà retourner. (i*6)
     }
     return colored_hash;
 }

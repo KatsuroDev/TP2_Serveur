@@ -1,4 +1,4 @@
-const SERVICE_URL = "https://api.andromia.science/monsters/atlas";
+const SERVICE_URL = 'https://api.andromia.science/monsters/atlas';
 
 $(document).ready(() => {
     getMonsters();
